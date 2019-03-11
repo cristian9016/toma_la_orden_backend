@@ -13,10 +13,7 @@ export class DBConnection {
 
         MongoClient.connect(connection)
             .then(db => {
-                this.db = db;
-                db.collection("restaurants")
-                    .createIndex({localizacion:"2dsphere"});
-                    
+                this.db = db;                    
                 if(callback) callback();
             })
             .catch(err => console.log(err))

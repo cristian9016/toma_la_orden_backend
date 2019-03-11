@@ -3,6 +3,7 @@ import { ResponseBody } from '../common/response-body';
 import { Request, Response } from 'express';
 import { sign } from 'jsonwebtoken';
 import { config } from './../../config/global';
+var md5 = require('md5');
 
 /**
  * @apiDefine LoginBody
@@ -17,6 +18,7 @@ export interface LoginBody {
 
 export function login(req: Request, res: Response, next) {
     let body: LoginBody = req.body;
+    body.password = md5(body.password);
     userService.login(body.email, body.password)
         .then(result => {
             if (result) {

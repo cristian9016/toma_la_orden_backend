@@ -1,21 +1,19 @@
 import { Router } from 'express';
-import {
-    all, allByIngredients, addIngredient, deleteIngredients,
-    deletePlate, insert, update
-} from '../controllers/plates/index';
-import { verifyAuth } from '../middlewares/auth'
+import { getPlates } from '../controllers/plates/get-plates';
+import { insertPlate } from '../controllers/plates/insert-plate';
+import { deletePlate } from '../controllers/plates/delete-plate';
+import { updatePlate } from '../controllers/plates/update-plate';
+import { verifyAuth } from '../middlewares/auth';
 
 
-const router: Router = Router();
+const plates: Router = Router();
 
-router.use(verifyAuth);
+plates.get("/", verifyAuth, getPlates);
 
-router.get("/:id", all);
-router.get("/", allByIngredients);
-router.post("/", insert);
-router.post("/:id/ingredient", addIngredient);
-router.put("/:id", update);
-router.delete("/:id", deletePlate);
-router.delete("/:id/ingredients", deleteIngredients);
+plates.post("/", verifyAuth, insertPlate);
 
-export default router;
+plates.delete("/:id", verifyAuth, deletePlate);
+
+plates.post("/:id/edit", verifyAuth, updatePlate);
+
+export default plates;

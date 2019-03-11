@@ -3,8 +3,7 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import users from './routes/users';
-import restaurants  from './routes/restaurants';
-import plates  from './routes/plates';
+import plates from './routes/plates';
 import cookieParser = require('cookie-parser'); // this module doesn't use the ES6 default export yet
 
 const app: express.Express = express();
@@ -18,8 +17,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/users', users);
-app.use('/api/v1/restaurants', restaurants);
 app.use('/api/v1/plates', plates);
+// app.use('/api/v1/restaurants', restaurants);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
