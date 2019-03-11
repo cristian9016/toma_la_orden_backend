@@ -5,6 +5,7 @@ import { platesService } from '../../services/plates-service';
 
 export function updatePlate(req: Request, res: Response, next) {
     let body: Plate = req.body;
+    delete body._id;
     let id: string = req.params.id;
     platesService.update(id, body)
         .then(result => res.send(new ResponseBody(true, true)))
