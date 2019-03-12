@@ -43,7 +43,7 @@ export class OrderService {
                 "estado": "pendiente",
             }
         )
-            .sort({ fecha: -1 })
+            .sort({ fecha: 1 })
             .skip(0)
             .limit(30)
             .toArray();
