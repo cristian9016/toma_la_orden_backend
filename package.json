@@ -8,6 +8,7 @@
     "test": "npm run compiletests && mocha ./tests/out/tests/**/test*.js",
     "compile": "node ./node_modules/typescript/bin/tsc -p ./src",
     "compiletests": "node ./node_modules/typescript/bin/tsc -p ./tests",
+    "buildAndRun":"gulp build && npm start",
     "docs": "apidoc -i src/ -o apidocs/ && apidoc-markdown -p apidocs/ -o README.md"
   },
   "dependencies": {
