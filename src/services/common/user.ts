@@ -7,6 +7,7 @@
  * @apiParam {String} Usuario.email Email del usuario
  * @apiParam {String} Usuario.celular celular del usuario
  * @apiParam {String} Usuario.password Password del usuario
+ * @apiParam {String} Usuario.rol Rol del usuario
  */
 
 export class User{
@@ -15,4 +16,6 @@ export class User{
     email:string;
     celular:string;
     password:string;
+    rol:string;
+    restaurante?:string;
 }

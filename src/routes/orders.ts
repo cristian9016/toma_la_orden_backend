@@ -8,9 +8,9 @@ import { deleteOrder } from '../controllers/orders/delete-order';
 
 const orders: Router = Router();
 
-orders.get("/:idUsuario/pending", verifyAuth, getPending);
+orders.get("/pending", verifyAuth, getPending);
 
-orders.get("/:idUsuario/complete", verifyAuth, getComplete);
+orders.get("/complete", verifyAuth, getComplete);
 
 orders.post("/", verifyAuth, insertOrder);
 

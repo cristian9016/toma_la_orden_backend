@@ -23,7 +23,8 @@ export function login(req: Request, res: Response, next) {
         .then(result => {
             if (result) {
                 let token = sign({ id: result._id }, config.secret, { expiresIn: "1h" });
-                res.send(new ResponseBody(true, token));
+                let rol = result.rol;
+                res.send(new ResponseBody(true, { token, rol }));
             }
             else res.send(new ResponseBody(false));
         })
